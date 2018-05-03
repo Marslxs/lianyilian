@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script src="jquery1.7.js"></script>
+<script>
+loc().set("name","lilin")
+console.log(loc().get("name"))
+    function loc(){
+
+        var storage = window.localStorage;
+
+        var storageApi = {
+            set:function(key,val){ //保存
+                if(val == undefined){
+                    this.remove(key)
+                }
+                storage.setItem(key,JSON.stringify(val))
+            },
+            get:function(key){  //提取
+                var val = JSON.parse(storage.getItem(key));
+
+                return val
+            },
+            remove:function(key){  //指定删除
+                storage.removeItem(key)
+            },
+            clear:function(){     //全部删除
+                storage.clean()
+            }
+
+        }
+
+                return storageApi;
+    }
+
+</script>
+</html>
